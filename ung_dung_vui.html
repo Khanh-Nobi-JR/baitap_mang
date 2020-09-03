@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea</title>
+</head>
+<body>
+<h3>Gõ gì đó vào đây: </h3>
+<textarea id="txt" cols="40" rows="10" onkeydown="typeTextarea();"></textarea>
+<script>
+    let str = 'khánh đẹp trai hehehe ';
+    let cstr = str.split('');
+    let n = "";
+    console.log(cstr)
+    function typeTextarea(){
+        let a = document.getElementById('txt').value;
+        let j = a.length;
+        if(j > 0) {
+            for( let i=1; i<=j; i++) {
+                n = n + cstr[i];
+                if(i == cstr.length-1) {
+                    document.getElementById('txt').value = "";
+                    n = "";
+                }
+            }
+        }
+        document.getElementById('txt').value = n;
+        n="";
+        setTimeout("typeTextarea()", 1);
+    }
+
+</script>
+</body>
+</html>
